@@ -1,5 +1,5 @@
 import { Shelter } from "../schemas/shelter.schemas";
 
-export default interface IShelterReposutory{
+export default interface IShelterRepository{
     get(): Promise<Shelter>
 }

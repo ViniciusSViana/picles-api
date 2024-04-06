@@ -1,6 +1,6 @@
 export default class GetShelterDetailsUseCaseOutput {
     shelterName: string
-    shelterWhatsapp: string
+    shelterWhatsApp: string
     shelterEmail: string
     shelterPhone: string
     createdAt: Date
