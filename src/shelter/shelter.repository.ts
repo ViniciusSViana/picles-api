@@ -10,10 +10,10 @@ export class shelterRepository implements IShelterRepository {
     constructor(
         @InjectModel(Shelter.name)
         private readonly shelterModel: Model<Shelter>
-    ){}
+    ) { }
 
-    async get(): Promise<Shelter>{
+    async get(): Promise<Shelter> {
         return await this.shelterModel.findOne()
     }
-    
+
 }

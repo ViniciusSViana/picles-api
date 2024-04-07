@@ -22,7 +22,7 @@ export class ShelterController {
 
     @Put()
     async updateShelterDetails(@Body() input: UpdateShelterDetailsControllerInput) {
-        const usecaseInput = new UpdateShelterDetailsUsecaseInput({...input});
+        const usecaseInput = new UpdateShelterDetailsUsecaseInput({ ...input });
         return await this.updateShelterDetailsUsecase.run(usecaseInput);
 
     }
