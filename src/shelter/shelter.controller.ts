@@ -21,9 +21,9 @@ export class ShelterController {
     }
 
     @Put()
-    async updateShelterDetails(@Body() input: UpdateShelterDetailsControllerInput) {
+    async updateShelterDetails(@Body() input: UpdateShelterDetailsControllerInput): Promise<UpdateShelterDetailsUseCaseOutput> {
         const usecaseInput = new UpdateShelterDetailsUsecaseInput({ ...input });
-        return await this.updateShelterDetailsUsecase.run(usecaseInput);
+       return await this.updateShelterDetailsUsecase.run(usecaseInput)
 
     }
 

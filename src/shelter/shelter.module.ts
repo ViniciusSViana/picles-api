@@ -6,7 +6,8 @@ import { Mongoose } from 'mongoose';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Shelter, ShelterSchema } from './schemas/shelter.schemas';
 import { shelterRepository } from './shelter.repository';
-import UpdateShelterDetailsUsecase from './usecases/update.shelter.details.usecases';
+import UpdateShelterDetailsUsecase from './usecases/update.shelter.details.usecase';
+
 
 @Module({
   controllers: [ShelterController],

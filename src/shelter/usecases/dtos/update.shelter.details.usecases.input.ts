@@ -1,6 +1,6 @@
 export default class UpdateShelterDetailsUsecaseInput {
     name: string;
-    whatsapp: string;
+    whatsApp: string;
     email: string;
     phone: string;
 
