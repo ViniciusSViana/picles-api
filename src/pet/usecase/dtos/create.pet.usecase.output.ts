@@ -1,4 +1,5 @@
 export default class createPetUsecaseOutput {
+    id: string
     name: string;
     type: string;
     size: string;
@@ -6,7 +7,7 @@ export default class createPetUsecaseOutput {
     bio: string;
     photo: string;
     cratedAt: Date;
-    updateAt: Date;
+    updatedAt: Date;
 
 
     constructor(data: Partial<createPetUsecaseOutput >) {
