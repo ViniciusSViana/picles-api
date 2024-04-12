@@ -21,7 +21,7 @@ import FileService from 'src/file.services';
       provide: PetTokens.createPetUseCase,
       useClass: CreatePetUsecase
     },
-    
+
     {
       provide: PetTokens.petRepository,
       useClass: PetRepository

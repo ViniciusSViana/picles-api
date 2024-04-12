@@ -6,8 +6,8 @@ import IFileService from "./intertfaces/file.service.interface";
 
 @Injectable()
 export default class FileService implements IFileService {
-    async   readfile(path: string): Promise<Buffer> {
+    async readfile(path: string): Promise<Buffer> {
         return fs.readFileSync(path);
     }
-     
+
 }
