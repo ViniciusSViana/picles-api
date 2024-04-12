@@ -1,9 +1,6 @@
 import { BadRequestException, Body, Controller, Delete, Get, Inject, Param, Patch, Post, Put, Query, UploadedFile, UseInterceptors } from '@nestjs/common';
 import createPetControllerInput from './dto/create.pet.controller.input';
 import { IUseCase } from 'src/domain/iusecase.interface';
-import createPetControllerOutput from './usecase/dtos/create.pet.usecase.output';
-import createUsecasePetInput from './usecase/dtos/create.pet.usecase.input';
-import createUsecasePetOutput from './usecase/dtos/create.pet.usecase.output';
 import PetTokens from './pet.tokens';
 import createPetUsecaseOutput from './usecase/dtos/create.pet.usecase.output';
 import createPetUsecaseInput from './usecase/dtos/create.pet.usecase.input';
@@ -20,6 +17,7 @@ import multerConfig from 'src/config/multer.config';
 import UpdatePetPhotoUsecaseInput from './usecase/dtos/update.pet.photo.usecase.input';
 import UpdatePetPhotoUsecaseOutput from './usecase/dtos/update.pet.photo.usecase.output';
 import GetPetsUsecaseInput from './usecase/dtos/get.pets.usecase.input';
+import GetPetsUsecaseOutput from './usecase/dtos/get.pets.usecase.output';
 
 @Controller('pet')
 export class PetController {
@@ -38,6 +36,9 @@ export class PetController {
 
     @Inject(PetTokens.updatePetPhotoUsecase)
     private readonly updatePetPhotoUsecase: IUseCase<UpdatePetPhotoUsecaseInput, UpdatePetPhotoUsecaseOutput>
+
+    @Inject(PetTokens.getPetsUsecase)
+    private readonly getPetsUsecase: IUseCase<GetPetsUsecaseInput, GetPetsUsecaseOutput>
 
     @Post()
     async createPet(@Body() input: createPetControllerInput): Promise<createPetUsecaseOutput> {

@@ -12,6 +12,7 @@ import DeletePetUsecase from './usecase/delete.pet.usecase';
 import UpdatePetPhotoUsecase from './usecase/update.pet.photo.usecase';
 import AppTokens from 'src/appToknes';
 import FileService from 'src/file.services';
+import GetPetsUsecase from './usecase/get.ptes.usecase';
 
 @Module({
   controllers: [PetController],
@@ -48,7 +49,12 @@ import FileService from 'src/file.services';
     {
       provide: AppTokens.fileService,
       useClass: FileService
+    },
+    {
+      provide: PetTokens.getPetsUsecase,
+      useClass: GetPetsUsecase
     }
   ]
+  
 })
 export class PetModule { }

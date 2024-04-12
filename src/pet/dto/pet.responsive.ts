@@ -4,7 +4,7 @@ export default class PetResponse {
     id: string;
     name: string;
     type: string;
-    seize: string;
+    size: string;
     gender: string;
     bio: string;
     photo: string;
@@ -13,8 +13,15 @@ export default class PetResponse {
 
     static fromPet(data: Pet): PetResponse {
         return new PetResponse({
-            ...data,
             id: data._id,
+            name: data.name,
+            type: data.type,
+            size: data.size,
+            gender: data.gender,
+            bio: data.bio,
+            photo: data.photo,
+            createdAt: data.createdAt,
+            updatedAt: data.updatedAt,
         });
     }
     constructor(data: Partial<PetResponse>) {
