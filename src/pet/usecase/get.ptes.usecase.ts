@@ -36,7 +36,7 @@ export default class GetPetsUsecase implements IUseCase<GetPetsUsecaseInput, Get
     }
 
     const totalPages = Math.ceil(queryResponse.total / input.itemsPerPage);
-
+    console.log(petResponseList)
     return new GetPetsUsecaseOutput({
         currentPage: input.page,
         totalPages,

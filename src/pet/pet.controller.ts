@@ -56,15 +56,21 @@ export class PetController {
         @Query('page') page?: string,
         @Query('itemsPerPage') itemsPerPage?: string,
     ) {
-        const FIRST_PAGE = 1
-        const DEFAULT_ITENS_PER_PAGE = 10
-        const useCaseInput = new GetPetsUsecaseInput({
-            type: !!type ? type : null,
-            size: !!size ? size : null,
-            gender: !!gender ? gender : null,
-            page: !!page ? parseInt(page) : FIRST_PAGE,
-            itemsPerPage: !!itemsPerPage ? parseInt(itemsPerPage) : DEFAULT_ITENS_PER_PAGE
-        })
+        try {
+            const FIRST_PAGE = 1
+            const DEFAULT_ITENS_PER_PAGE = 10
+            const useCaseInput = new GetPetsUsecaseInput({
+                type: !!type ? type : null,
+                size: !!size ? size : null,
+                gender: !!gender ? gender : null,
+                page: !!page ? parseInt(page) : FIRST_PAGE,
+                itemsPerPage: !!itemsPerPage ? parseInt(itemsPerPage) : DEFAULT_ITENS_PER_PAGE
+            });
+            return await this.getPetsUsecase.run(useCaseInput);
+        } catch (error) {
+            console.log(error)
+        }
+
     }
     @Get(':id')
     async getPetById(@Param('id') id: string): Promise<GetPetByIUsecaseOutput> {
