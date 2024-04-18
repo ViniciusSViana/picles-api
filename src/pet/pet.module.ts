@@ -1,18 +1,17 @@
 import { Module } from '@nestjs/common';
 import { PetController } from './pet.controller';
 import PetTokens from './pet.tokens';
-import CreatePetUsecase from './usecase/create.pet.usecase';
+import CreatePetUseCase from './usecases/create.pet.usecase';
 import PetRepository from './pet.repository';
-import { Mongoose } from 'mongoose';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Pet, PetSchema } from './schema/pet.schema';
-import GetPetByIdUsecase from './usecase/get.petbyid.usecase';
-import UpdatePetUsecase from './usecase/update.pet.usecase';
-import DeletePetUsecase from './usecase/delete.pet.usecase';
-import UpdatePetPhotoUsecase from './usecase/update.pet.photo.usecase';
-import AppTokens from 'src/appToknes';
-import FileService from 'src/file.services';
-import GetPetsUsecase from './usecase/get.ptes.usecase';
+import { Pet, PetSchema } from './schemas/pet.schema';
+import GetPetByIdUseCase from './usecases/get.pet.by.id.usecase';
+import UpdatePetByIdUseCase from './usecases/update.pet.by.id.usecase';
+import DeletePetByIdUseCase from './usecases/delete.pet.by.id.usecase';
+import UpdatePetPhotoByIdUseCase from './usecases/update.pet.photo.by.id.usecase';
+import AppTokens from 'src/app.tokens';
+import FileService from 'src/file.service';
+import GetPetsUseCase from './usecases/get.pets.usecase';
 
 @Module({
   controllers: [PetController],
@@ -20,41 +19,36 @@ import GetPetsUsecase from './usecase/get.ptes.usecase';
   providers: [
     {
       provide: PetTokens.createPetUseCase,
-      useClass: CreatePetUsecase
+      useClass: CreatePetUseCase
     },
-
+    {
+      provide: PetTokens.getPetByIdUseCase,
+      useClass: GetPetByIdUseCase
+    },
+    {
+      provide: PetTokens.updatePetByIdUseCase,
+      useClass: UpdatePetByIdUseCase
+    },
+    {
+      provide: PetTokens.deletePetByIdUseCase,
+      useClass: DeletePetByIdUseCase
+    },
+    {
+      provide: PetTokens.updatePetPhotoByIdUseCase,
+      useClass: UpdatePetPhotoByIdUseCase
+    },
+    {
+      provide: PetTokens.getPetsUseCase,
+      useClass: GetPetsUseCase
+    },
     {
       provide: PetTokens.petRepository,
       useClass: PetRepository
     },
-
-    {
-      provide: PetTokens.getPetByIdUsecase,
-      useClass: GetPetByIdUsecase
-    },
-
-    {
-      provide: PetTokens.updatePetUsecase,
-      useClass: UpdatePetUsecase
-    },
-    {
-      provide: PetTokens.deletePetUsecase,
-      useClass: DeletePetUsecase
-    },
-    {
-      provide: PetTokens.updatePetPhotoUsecase,
-      useClass: UpdatePetPhotoUsecase
-    },
-
     {
       provide: AppTokens.fileService,
       useClass: FileService
-    },
-    {
-      provide: PetTokens.getPetsUsecase,
-      useClass: GetPetsUsecase
     }
   ]
-  
 })
-export class PetModule { }
+export class PetModule {}
